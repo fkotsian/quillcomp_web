@@ -1,0 +1,31 @@
+<!doctype html>
+{% load static %}
+<html>
+  <head>
+    <title>Quill Comprehension</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'quillcomp_web/style.css'%}"></link>
+  </head>
+  <body>
+    <div class="navbar">
+      <nav class="navbar-content">
+        <div class="navbar-header">
+          <a class="brand" href="/">
+            <img src="https://www.quill.org/images/quill_header_logo.svg" alt="Quill Logo" />
+          </a>
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li>But</li>
+            <li>Because</li>
+            <li>So</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>
