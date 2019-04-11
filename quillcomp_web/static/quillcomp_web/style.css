@@ -17,6 +17,9 @@
   font-style: normal;
 }
 
+/*
+ *    Base Styles
+ */
 
 html body {
   font-family: "adelle-sans", Helvetica, Arial, sans-serif;
@@ -26,8 +29,9 @@ html body {
 
   font-size: 14px;
   line-height: 1.42857143;
-  color: #000000;
+  max-width: 980px;
   background-color: #f7f5f5;
+  color: #3f3f3f;
 }
 
 .navbar {
@@ -43,7 +47,7 @@ html body {
 }
 
 .navbar-content {
-  width: 60%;
+  width: 66%;
   max-width: 980px;
   margin: 0 auto;
   color: white;
@@ -75,6 +79,125 @@ html body {
 }
 
 .content {
-  width: 60%;
+  width: 66%;
+  max-width: 980px;
   margin: 0 auto;
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: adelle-sans,Helvetica,Arial,sans-serif
+  font-size: 20px;
+  resize: none;
+  margin: 0;
+}
+
+/*
+ *    Student Feedback Styles
+ */
+.student-feedback-container {
+  position: relative;
+  background-color: #e5e5e5;
+  padding: 13px 20px 16px;
+  margin-top: 20px;
+  border-radius: 2px;
+  width: 100%;
+}
+.student-feedback-container p {
+  animation: fadein .8s 1;
+  font-family: Roboto-mono,Monaco,Inconsolata,monospace;
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #5a5a5a;
+  line-height: 1.45;
+}
+
+.cue {
+  background-color: #fffed5;
+  line-height: 28px;
+  font-size: 20px;
+  font-family: Roboto-mono,Monaco,Inconsolata,monospace;
+  margin-right: 13px;
+  padding: 0 5px;
+}
+.info-icon {
+  /* src: https://assets.quill.org/images/icons/question_icon.svg */
+}
+
+.feedback-row {
+  font-family: Roboto-mono,Monaco,Inconsolata,monospace;
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #5a5a5a;
+  line-height: 1.45;
+}
+
+.text-editor-card {
+  margin-top: 20px;
+  min-height: 68px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.24), 0 0 2px 0 rgba(0,0,0,.12);
+
+  font-family: Courier New;
+  font-size: 22px;
+  margin-bottom: 1em;
+  color: #3f3f3f;
+
+  width: 100%;
+}
+
+.question-button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #f4f4f4;
+  border-radius: 3px;
+  color: #303030;
+  display: inline-flex;
+  font-size: 14px;
+  height: 32px;
+  justify-content: flex-start;
+  line-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: relative;
+  vertical-align: top;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+.question-button {
+  background-color: #00c2a2;
+  font-family: adelle-sans,Helvetica,Arial,sans-serif;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 18px;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 25px;
+}
+.is-disabled {
+  opacity: 1;
+  background-color: #bcbcbc;
+  border-color: #f4f4f4;
+  cursor: not-allowed;
+  pointer-events: none;
 }
