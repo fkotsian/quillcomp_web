@@ -1,0 +1,12 @@
+<h1>Available Prompts:</h1>
+{% if prompts %}
+<ol>
+  {% for prompt in prompts %}
+  <li>
+    <a href="/prompts/{{ prompt.id }}/">{{prompt.text}}</a>
+  </li>
+  {% endfor %}
+</ol>
+{% else %}
+<p>No prompts created yet!</p>
+{% endif %}

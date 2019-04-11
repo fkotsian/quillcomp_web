@@ -1,0 +1,11 @@
+<h1>{{ prompt.text}}</h1>
+
+{% if responses %}
+<ol>
+  {% for resp in responses %}
+  <li>{{prompt.text}}, <i>{{ resp.response_text}}</i></li>
+  {% endfor %}
+</ol>
+{% else %}
+<p>No student responses yet!</p>
+{% endif %}
