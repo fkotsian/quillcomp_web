@@ -29,8 +29,14 @@ def student_responses(request, prompt_id):
 
 def new_response(request, prompt_id):
     prompt = Prompt.objects.get(id = prompt_id)
+
     nlp = Nlp(prompt = prompt.text, training_sents = settings.STUDENT_RESPONSES_BUT)
-    feedback = nlp.run()
+    user_response = " they should offer a healthy option so that kids can have a snack if they get hungry."
+    user_sent = prompt.text + user_response
+
+    feedback_codes = nlp.feedback_for_sent(user_sent)
+    feedback = nlp.translated_feedback(feedback_codes)
+
     # run NLP code
     return HttpResponse(feedback)
 
