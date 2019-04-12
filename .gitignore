@@ -1,2 +1,3 @@
-./quillcomp_project/__pycache__/*
-./quillcomp_web/__pycache__/*
+quillcomp_project/__pycache__/*
+quillcomp_web/__pycache__/*
+quillcomp_web/migrations/__pycache__/*
