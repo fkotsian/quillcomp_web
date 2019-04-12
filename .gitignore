@@ -1,1 +1,2 @@
-/quillcomp_project/__pycache__/*
+./quillcomp_project/__pycache__/*
+./quillcomp_web/__pycache__/*

@@ -123,3 +123,32 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+# NLP SETUP
+# - placed here for speed - not loaded on every request
+import spacy
+import csv
+from pathlib import Path
+
+# load model
+SPACY_EN = spacy.load('en_core_web_lg')
+print("Model EN_LG loaded!")
+
+def sents_from_csv(path_to_csv):
+    sents = []
+    with open(path_to_csv, 'r') as srldata:
+        reader = csv.reader(srldata, delimiter=',')
+        for row in reader:
+            base = row[0]
+            completion = row[1]
+            seq = (base, completion)
+            sents.append("".join(seq))
+    return sents
+
+path_student_responses_but = str(
+    Path(
+        Path(__file__).parent.parent,
+        "./quillcomp_web/static/quillcomp_web/sample_responses_but_040819.csv"
+    ).resolve()
+)
+STUDENT_RESPONSES_BUT = sents_from_csv(path_student_responses_but)

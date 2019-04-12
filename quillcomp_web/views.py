@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.conf import settings
 from .models import Prompt, StudentResponse
+from .nlp import Nlp
+
 
 # Create your views here.
 def landing(request):
@@ -25,4 +28,9 @@ def student_responses(request, prompt_id):
     return HttpResponse(template.render(context, request))
 
 def new_response(request, prompt_id):
-    return HttpResponse("Abc123")
+    prompt = Prompt.objects.get(id = prompt_id)
+    nlp = Nlp(prompt = prompt.text, training_sents = settings.STUDENT_RESPONSES_BUT)
+    feedback = nlp.run()
+    # run NLP code
+    return HttpResponse(feedback)
+
