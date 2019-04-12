@@ -1,3 +1,17 @@
 quillcomp_project/__pycache__/*
 quillcomp_web/__pycache__/*
 quillcomp_web/migrations/__pycache__/*
+staticfiles/*
+
+quillcomp_project/*.log
+quillcomp_project/*.pot
+quillcomp_project/*.pyc
+quillcomp_project/__pycache__/
+quillcomp_project/local_settings.py
+quillcomp_web/*.log
+quillcomp_web/*.pot
+quillcomp_web/*.pyc
+quillcomp_web/__pycache__/
+quillcomp_web/local_settings.py
+
+./db.sqlite3
