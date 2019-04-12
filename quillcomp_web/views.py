@@ -1,9 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from django.conf import settings
 from .models import Prompt, StudentResponse
 from .nlp import Nlp
-
 
 # Create your views here.
 def landing(request):
@@ -30,13 +29,33 @@ def student_responses(request, prompt_id):
 def new_response(request, prompt_id):
     prompt = Prompt.objects.get(id = prompt_id)
 
-    nlp = Nlp(prompt = prompt.text, training_sents = settings.STUDENT_RESPONSES_BUT)
-    user_response = " they should offer a healthy option so that kids can have a snack if they get hungry."
-    user_sent = prompt.text + user_response
+    if request.method == 'POST':
+        print("POSTDATA")
+        print(request.POST)
+        user_response = request.POST.get('response_text', None)
+    else:
+        user_response = " they should offer a healthy option so that kids can have a snack if they get hungry."
 
-    feedback_codes = nlp.feedback_for_sent(user_sent)
-    feedback = nlp.translated_feedback(feedback_codes)
+    print("USER RESPONSE:")
+    print(user_response)
 
     # run NLP code
-    return HttpResponse(feedback)
+    nlp = Nlp(prompt = prompt.text, training_sents = settings.STUDENT_RESPONSES_BUT)
+    user_sent = prompt.text + " " + user_response
+
+    print(user_sent)
+
+    feedback_codes = nlp.feedback_for_sent(user_sent)
+
+    feedback = nlp.translated_feedback(feedback_codes)
+
+    print("FEEDBACK CODES!")
+    print(feedback_codes)
+    print(feedback)
+
+    # respond JSON
+    response_data = {
+        'feedback': feedback,
+    }
+    return JsonResponse(response_data)
 

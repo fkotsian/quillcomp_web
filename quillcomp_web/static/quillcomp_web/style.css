@@ -33,6 +33,12 @@ html body {
   color: #3f3f3f;
 }
 
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+
 .navbar {
   width: 100%;
 
@@ -46,7 +52,7 @@ html body {
 }
 
 .navbar-content {
-  width: 66%;
+  width: 60%;
   max-width: 980px;
   margin: 0 auto;
   color: white;
@@ -76,9 +82,13 @@ html body {
   margin-left: 2rem;
   letter-spacing: 0.6px;
 }
+.navbar-right ul li a {
+  text-decoration: none;
+  color: #fff;
+}
 
 .content {
-  width: 66%;
+  width: 60%;
   max-width: 980px;
   margin: 0 auto;
 }
@@ -87,10 +97,17 @@ textarea {
   width: 100%;
   border: none;
   background: none;
-  font-family: adelle-sans,Helvetica,Arial,sans-serif
-  font-size: 20px;
   resize: none;
+  outline: none;
+  font-family: adelle-sans,Helvetica,Arial,sans-serif;
+  font-size: 20px;
   margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+textarea::placeholder {
+  color: #5a5a5a;
+  opacity: .8;
 }
 
 /*
@@ -105,37 +122,45 @@ textarea {
   width: 100%;
 }
 .student-feedback-container p {
-  animation: fadein .8s 1;
-  font-family: Roboto-mono,Monaco,Inconsolata,monospace;
+  margin: 0;
   margin-bottom: 0;
+  animation: fadein .8s 1;
+  font-family: 'Roboto Mono',Monaco,Inconsolata,monospace;
   font-size: 20px;
   color: #5a5a5a;
   line-height: 1.45;
+  opacity: .9;
 }
 
 .cue {
   background-color: #fffed5;
   line-height: 28px;
   font-size: 20px;
-  font-family: Roboto-mono,Monaco,Inconsolata,monospace;
+  font-family: 'Roboto Mono',Monaco,Inconsolata,monospace;
   margin-right: 13px;
   padding: 0 5px;
 }
 .info-icon {
   /* src: https://assets.quill.org/images/icons/question_icon.svg */
+  max-width: 22px;
+  margin-right: 12px;
+  margin-top: 2px;
 }
 
 .feedback-row {
-  font-family: Roboto-mono,Monaco,Inconsolata,monospace;
+  font-family: 'Roboto Mono',Monaco,Inconsolata,monospace;
   margin-bottom: 0;
   font-size: 20px;
   color: #5a5a5a;
   line-height: 1.45;
+
+  display: flex;
+  align-items: flex-start;
 }
 
 .text-editor-card {
   margin-top: 20px;
-  min-height: 68px;
+  min-height: 32px;
   background-color: #fafafa;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.24), 0 0 2px 0 rgba(0,0,0,.12);
 
@@ -145,6 +170,14 @@ textarea {
   color: #3f3f3f;
 
   width: 100%;
+  padding: 20px;
+}
+.text-editor-card__content {
+  display: flex;
+  align-items: center;
+}
+.text-editor-card__textarea {
+  height: 28px;
 }
 
 .question-button-group {

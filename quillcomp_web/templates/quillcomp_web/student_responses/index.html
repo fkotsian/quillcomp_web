@@ -2,16 +2,66 @@
 
 {% block content %}
 
-  <h1>{{ prompt.text}}</h1>
+  <h1>{{ prompt.text}}...</h1>
 
   {% if responses %}
   <ol>
     {% for resp in responses %}
-    <li>{{prompt.text}}, <i>{{ resp.response_text}}</i></li>
+    <li>{{prompt.text}} <i>{{ resp.response_text}}</i></li>
     {% endfor %}
   </ol>
   {% else %}
   <p>No student responses yet!</p>
   {% endif %}
+
+  <div class="student-feedback-container">
+    <div class="feedback-row">
+      <img class="info-icon" src="https://assets.quill.org/images/icons/question_icon.svg" />
+      <div id="response-feedback">
+        <p>Complete the prompt using the conjunction BUT.</p>
+        <p>Provide a claim, evidence, and consequence in your response.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-editor-card">
+    <div class="text-editor-card__content">
+      <textarea
+        id="response-text"
+        class="text-editor-card__textarea"
+        placeholder="Type your answer here."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="question-button-group">
+    <button
+      id="submit-response"
+      class="button question-button">
+      Check Your Response
+    </button>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.ajaxSetup({
+          headers: { "X-CSRFToken": '{{csrf_token}}' }
+      });
+      $("#submit-response").click(function(e) {
+        var responseText = $('#response-text').val()
+        $.ajax({
+          type: "POST",
+          url: window.location.pathname + "new_response/",
+          data: {
+            'response_text': responseText,
+          },
+          success: function(data) {
+            $('#response-feedback').html("<p>"+ data['feedback'] + "</p>")
+          },
+        });
+        return false;
+      });
+    });
+  </script>
 
 {% endblock %}

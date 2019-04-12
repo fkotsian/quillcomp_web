@@ -156,6 +156,8 @@ class Nlp:
             return "Good work providing a claim. Can you make it stronger by citing evidence from the text?"
         elif not feedback_dict['consequence']:
             return "Great job making a claim and supporting it with evidence from the passage. Now consider how you can make your evidence stronger. Provide a consequence of your evidence, so the reader can see the consequences of your claim."
+        else:
+            return "Great work! You've provided a claim, supported it with evidence, and shown a consequence. Nice work!"
 
 
 
