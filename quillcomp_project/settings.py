@@ -134,12 +134,12 @@ import csv
 # import model directly as a package for Heroku
 # - https://github.com/explosion/spaCy/issues/2892
 # - https://spacy.io/usage/models#models-download
-import en_core_web_md
+import en_core_web_sm
 from pathlib import Path
 
 # load model
-SPACY_EN = en_core_web_md.load()
-print("Model EN_MD loaded!")
+SPACY_EN = en_core_web_sm.load()
+print("Model EN_SM loaded!")
 
 def sents_from_csv(path_to_csv):
     sents = []
